@@ -23,7 +23,7 @@ public class Main {
         //listy list, zbiory Set, mapy
 
         //wstawianie liczb z klawiaury do kolekcji
-        List<Integer> listaLiczbWpisanycg = new ArrayList<>();
+        ArrayList<Integer> listaLiczbWpisanycg = new ArrayList<>();
         System.out.println("Podaj 6 liczb");
         Scanner dane = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {
@@ -77,6 +77,61 @@ public class Main {
                 trafione.add(wpisana);
             }
         }
-        System.out.println("Trafione: "+trafione);
+        System.out.println("Trafione: " + trafione);
+    }
+    //metody
+
+
+    /**
+     * Metoda wylosujLiczby losuje liczby calkowite z zakresu od 1 do 100
+     *
+     * @param ile liczba calkowita przechowquje ile liczb wylosujemy
+     * @return lista z wylosowanymi liczbami
+     */
+    private ArrayList<Integer> wylosujLiczby(int ile) {
+        ArrayList<Integer> ListaLosowychBezPowtorzen = new ArrayList<>();
+        for (int i = 0; i < ile; i++) {
+            int liczba = (int) (Math.random() * 100 + 1);
+            while (ListaLosowychBezPowtorzen.contains(liczba)) {
+                liczba = (int) (Math.random() * 100 + 1);
+            }
+            ListaLosowychBezPowtorzen.add(liczba);
+
+        }
+
+
+        return ListaLosowychBezPowtorzen;
+    }
+
+    private ArrayList<Integer> wpiszLiczbyzKlawiatury(int ile) {
+        ArrayList<Integer> listaLiczbWpisanycg = new ArrayList<>();
+        System.out.println("Podaj" + ile + "liczb");
+        Scanner dane = new Scanner(System.in);
+        for (int i = 0; i < 6; i++) {
+            int klawiatura = dane.nextInt();
+            listaLiczbWpisanycg.add(klawiatura);
+        }
+        System.out.println("Wstawiono liczby:");
+        for (Integer LiczbaWpisana : listaLiczbWpisanycg) {
+            System.out.println(LiczbaWpisana);
+        }
+        return listaLiczbWpisanycg;
+
+    }
+    private void wypiszKolekcję(List<Integer> listaDoWypisania){
+        for (Integer element:listaDoWypisania) {
+            System.out.println("Element:"+element);
+        }
+    }
+    private LinkedList<Integer> zwrocTrafione(ArrayList<Integer> listaLiczbWpisanych,
+                                              ArrayList<Integer>listaLiczbLosowych){
+        LinkedList<Integer> trafione =new LinkedList<>();
+        //trafiione to elementy które występują w wylosowanych i wpisanych
+        for (Integer wpisana: listaLiczbWpisanych) {
+            if(listaLiczbLosowych.contains(wpisana)){
+                trafione.add(wpisana);
+            }
+        }
+        return trafione;
     }
 }
