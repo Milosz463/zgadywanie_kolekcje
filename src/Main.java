@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,5 +54,22 @@ public class Main {
 //wypisywanie
         System.out.println("Wylosowano bez powtorzen");
         System.out.println(ListaLosowychBezPowtorzen);
+        //losowanie bez powtorzen do zbioru
+        HashSet<Integer> zbiorLiczbLosowych = new HashSet<>();
+        while(zbiorLiczbLosowych.size()<6){
+            int liczba = (int)(Math.random()*100+1);
+            zbiorLiczbLosowych.add(liczba);
+        }
+        System.out.println(zbiorLiczbLosowych);
+        //lista
+        /*
+        elementy moga sie powtarzac
+        elementy sa indeksowane
+         */
+        //zbior zazwyczaj
+        /*
+        elementy unikatowe
+        elementy nie sa indeksowane
+         */
     }
 }
