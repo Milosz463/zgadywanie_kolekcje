@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,42 +8,43 @@ public class Main {
         // nie mozna go pozniej zmienic
         //elementem tablicy moga byc typy proste i zlozone
         //tablica z wartosciamy losowym od 1 do 100 6 elementow
-        int tablicaLosowa[]= new int[6];
+        int tablicaLosowa[] = new int[6];
         for (int i = 0; i < tablicaLosowa.length; i++) {
-            tablicaLosowa[i]=(int) (Math.random()*100+1);
+            tablicaLosowa[i] = (int) (Math.random() * 100 + 1);
 
         }
         //wypisywanie elementow tablicy
-        for (int element:tablicaLosowa) {
-            System.out.println(element+", ");
-            //kolekcje, elementy typami zlozonymi
-            //nie musza miec zdefiniowanego rozmiaru
-            //rozmiar w trakcie mozna zmieniac
-            //listy list, zbiory Set, mapy
-
-            //wstawianie liczb z klawiaury do kolekcji
-            List<Integer> listaLiczbWpisanycg = new ArrayList<>();
-            System.out.println("Podaj 6 liczb");
-            Scanner dane= new Scanner(System.in);
-            for (int i = 0; i < 6; i++) {
-                int klawiatura=dane.nextInt();
-                listaLiczbWpisanycg.add(klawiatura);
-            }
-            System.out.println("Wstawiono liczby:");
-            for (Integer LiczbaWpisana:listaLiczbWpisanycg) {
-                System.out.println(LiczbaWpisana);
-            }
-            //Wypisywanie inaczej
-            for (int i = 0; i < listaLiczbWpisanycg.size(); i++) {
-                System.out.println(listaLiczbWpisanycg.get(i));
-            }
+        for (int element : tablicaLosowa) {
+            System.out.println(element + ", ");
         }
-//Losowanie licz bez powtorzen
-        ArrayList<Integer> ListaLosowychBezPowtorzen= new ArrayList<>();
+        //kolekcje, elementy typami zlozonymi
+        //nie musza miec zdefiniowanego rozmiaru
+        //rozmiar w trakcie mozna zmieniac
+        //listy list, zbiory Set, mapy
+
+        //wstawianie liczb z klawiaury do kolekcji
+        List<Integer> listaLiczbWpisanycg = new ArrayList<>();
+        System.out.println("Podaj 6 liczb");
+        Scanner dane = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {
-            int liczba=(int) (Math.random()*100+1);
-            while (ListaLosowychBezPowtorzen.contains(liczba)){
-                liczba=(int) (Math.random()*100+1);
+            int klawiatura = dane.nextInt();
+            listaLiczbWpisanycg.add(klawiatura);
+        }
+        System.out.println("Wstawiono liczby:");
+        for (Integer LiczbaWpisana : listaLiczbWpisanycg) {
+            System.out.println(LiczbaWpisana);
+        }
+        //Wypisywanie inaczej
+        for (int i = 0; i < listaLiczbWpisanycg.size(); i++) {
+            System.out.println(listaLiczbWpisanycg.get(i));
+        }
+
+//Losowanie licz bez powtorzen
+        ArrayList<Integer> ListaLosowychBezPowtorzen = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            int liczba = (int) (Math.random() * 100 + 1);
+            while (ListaLosowychBezPowtorzen.contains(liczba)) {
+                liczba = (int) (Math.random() * 100 + 1);
             }
             ListaLosowychBezPowtorzen.add(liczba);
 
@@ -56,8 +54,8 @@ public class Main {
         System.out.println(ListaLosowychBezPowtorzen);
         //losowanie bez powtorzen do zbioru
         HashSet<Integer> zbiorLiczbLosowych = new HashSet<>();
-        while(zbiorLiczbLosowych.size()<6){
-            int liczba = (int)(Math.random()*100+1);
+        while (zbiorLiczbLosowych.size() < 6) {
+            int liczba = (int) (Math.random() * 100 + 1);
             zbiorLiczbLosowych.add(liczba);
         }
         System.out.println(zbiorLiczbLosowych);
@@ -71,5 +69,14 @@ public class Main {
         elementy unikatowe
         elementy nie sa indeksowane
          */
+
+        LinkedList<Integer> trafione = new LinkedList<>();
+        //trafione to elementy ktore wystepuja w wylosowanych i wypisanych
+        for (Integer wpisana : listaLiczbWpisanycg) {
+            if (zbiorLiczbLosowych.contains(wpisana)) {
+                trafione.add(wpisana);
+            }
+        }
+        System.out.println("Trafione: "+trafione);
     }
 }
