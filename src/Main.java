@@ -2,6 +2,14 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        //Losowanie liczby
+        ArrayList<Integer> losowe = wylosujLiczby(ile:6);
+        System.out.println("Wylosowana lista");
+        wypiszKolekcję(losowe);
+        ArrayList<Integer> wpisane = wpiszLiczbyzKlawiatury();
+        wypiszKolekcję(wpisane);
+        LinkedList<Integer> trafione = zwrocTrafione(losowe, wpisane);
+        wypiszKolekcję(trafione);
 
         //tablica
         //musi miec z gory okreslony rozmiar
@@ -88,7 +96,7 @@ public class Main {
      * @param ile liczba calkowita przechowquje ile liczb wylosujemy
      * @return lista z wylosowanymi liczbami
      */
-    private ArrayList<Integer> wylosujLiczby(int ile) {
+    private static  ArrayList<Integer> wylosujLiczby(int ile) {
         ArrayList<Integer> ListaLosowychBezPowtorzen = new ArrayList<>();
         for (int i = 0; i < ile; i++) {
             int liczba = (int) (Math.random() * 100 + 1);
@@ -103,7 +111,7 @@ public class Main {
         return ListaLosowychBezPowtorzen;
     }
 
-    private ArrayList<Integer> wpiszLiczbyzKlawiatury(int ile) {
+    private static ArrayList<Integer> wpiszLiczbyzKlawiatury(int ile) {
         ArrayList<Integer> listaLiczbWpisanycg = new ArrayList<>();
         System.out.println("Podaj" + ile + "liczb");
         Scanner dane = new Scanner(System.in);
@@ -118,12 +126,12 @@ public class Main {
         return listaLiczbWpisanycg;
 
     }
-    private void wypiszKolekcję(List<Integer> listaDoWypisania){
+    private static void wypiszKolekcję(List<Integer> listaDoWypisania){
         for (Integer element:listaDoWypisania) {
             System.out.println("Element:"+element);
         }
     }
-    private LinkedList<Integer> zwrocTrafione(ArrayList<Integer> listaLiczbWpisanych,
+    private static LinkedList<Integer> zwrocTrafione(ArrayList<Integer> listaLiczbWpisanych,
                                               ArrayList<Integer>listaLiczbLosowych){
         LinkedList<Integer> trafione =new LinkedList<>();
         //trafiione to elementy które występują w wylosowanych i wpisanych
